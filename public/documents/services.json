@@ -1,0 +1,66 @@
+[
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab00"
+    },
+    "title": "Услуги терапевтического профиля",
+    "path": "therapist",
+    "img": "therapist.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab01"
+    },
+    "title": "Невролог",
+    "path": "neurologist",
+    "img": "neurologist.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab02"
+    },
+    "title": "Офтальмолог",
+    "path": "ophthalmologist",
+    "img": "ophthalmologist.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab03"
+    },
+    "title": "Кардиолог",
+    "path": "cardiologist",
+    "img": "cardiologist.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab04"
+    },
+    "title": "Эндоскопия",
+    "path": "endoscopy",
+    "img": "endoscopy.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab05"
+    },
+    "title": "Ультразвуковая диагностика",
+    "path": "ultrasound",
+    "img": "ultrasound.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab06"
+    },
+    "title": "Анализы (INVITRO)",
+    "path": "invitro",
+    "img": "invitro.jpeg"
+  },
+  {
+    "_id": {
+      "$oid": "63e0ad08bbf929c865c7ab07"
+    },
+    "title": "Инъекции",
+    "path": "injection",
+    "img": "injection.jpeg"
+  }
+]
