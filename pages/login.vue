@@ -54,7 +54,6 @@ const loginHandler = async () => {
 @import '@/assets/styles/_variables.scss';
 
 .login {
-
   .form {
     margin: 24px auto;
     max-width: 480px;

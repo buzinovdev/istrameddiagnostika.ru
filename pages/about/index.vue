@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import ServicesSection from "@/components/section/Services";
+import {useStore} from '@/store'
+
+const store = useStore()
+const {$translate} = useNuxtApp()
+const hovered = ref<boolean>(false)
+const services = computed(() => store.services)
+const requisites = computed(() => store.requisites)
+useHead({
+  "title": 'О медицинском центре "Диагностика и лечение"',
+  "meta": [
+    {
+      "name": "description",
+      "content": "Медицинский центр «Диагностика и лечение» работает в городе Истра с 1995 года. Узнайте больше о нас, услугах и наших специалистах."
+    }
+  ],
+})
+</script>
+
 <template>
   <div class="page-main">
     <section class="section">
@@ -97,17 +117,6 @@
     <ServicesSection/>
   </div>
 </template>
-
-<script setup lang="ts">
-import ServicesSection from "@/components/section/Services";
-import {useStore} from '@/store'
-
-const store = useStore()
-const {$translate} = useNuxtApp()
-const hovered = ref<boolean>(false)
-const services = computed(() => store.services)
-const requisites = computed(() => store.requisites[0])
-</script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
@@ -239,6 +248,7 @@ section {
   &-wrap {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     gap: 24px;
     margin-left: 24px;
   }

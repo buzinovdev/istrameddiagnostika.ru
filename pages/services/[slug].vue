@@ -9,6 +9,15 @@ const space = (number) => {
   if (number === undefined) return
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
+useHead({
+  "title": `${service.value.title}. Медицинский центр "Диагностика и лечение".`,
+  "meta": [
+    {
+      "name": "description",
+      "content": `Медицинский центр "Диагностика и лечение". ${service.value.title}. Узнайте о услугах и специалистах...`
+    }
+  ],
+})
 </script>
 
 <template>

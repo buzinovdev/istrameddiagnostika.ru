@@ -1,3 +1,23 @@
+<script setup>
+import PageTitle from "@/components/PageTitle"
+import BootstrapIcon from "@/components/BootstrapIcon";
+import CallNumber from "@/components/CallNumber";
+import Copy from "@/components/Copy";
+import SocialList from "@/components/social/List";
+import {useStore} from '@/store'
+const store = useStore()
+const requisites = computed(() => store.requisites)
+useHead({
+  title: 'Контакты медицинского центра «Диагностика и лечение»',
+  meta: [
+    {
+      name: 'description',
+      content: `Контакты медицинского центра «Диагностика и лечение» в Истре. Позвоните нам: ${requisites.value.phones.join(', ')}.`
+    }
+  ]
+})
+</script>
+
 <template>
   <div class="page-contacts">
     <PageTitle text="Контакты медицинского центра «Диагностика и лечение»"/>
@@ -36,26 +56,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import PageTitle from "@/components/PageTitle"
-import BootstrapIcon from "@/components/BootstrapIcon";
-import CallNumber from "@/components/CallNumber";
-import Copy from "@/components/Copy";
-import SocialList from "@/components/social/List";
-import {useStore} from '@/store'
-const store = useStore()
-const requisites = computed(() => store.requisites[0])
-useHead({
-  title: 'Контакты медицинского центра «Диагностика и лечение»',
-  meta: [
-    {
-      name: 'description',
-      content: 'Контакты медицинского центра «Диагностика и лечение» в Истре. Позвоните нам: +7 (495) 994-61-46, +7 (925) 308-08-96.'
-    }
-  ]
-})
-</script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";

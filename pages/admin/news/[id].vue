@@ -33,6 +33,7 @@ const handler = async () => {
       }
     }).catch(e => console.log(e))
   }
+  console.log(news.value.dateStart, new Date(news.value.dateStart))
   await $fetch(`${store.apiLink}news/update`, {
     method: 'POST',
     headers: {'Authorization': `Bearer ${cookieToken.value}`},
@@ -45,8 +46,8 @@ const handler = async () => {
       img: uploadFiles[0] || '',
       content: news.value.content,
       date: new Date(),
-      dateStart: new Date(news.value.dateStart),
-      dateEnd: new Date(news.value.dateEnd)
+      dateStart: news.value.dateStart,
+      dateEnd: news.value.dateEnd
     }
   }).then((res) => {
     store.setNotify({text: res.msg, type: res.msgType, active: res.msgActive})

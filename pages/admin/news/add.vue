@@ -52,8 +52,8 @@ const handler = async () => {
       img: uploadFiles[0] || '',
       content: content.value,
       date: new Date(),
-      dateStart: new Date(dateStart.value),
-      dateEnd: new Date(dateEnd.value)
+      dateStart: dateStart.value,
+      dateEnd: dateEnd.value
     }
   }).then((res) => {
     store.setNotify({text: res.msg, type: res.msgType, active: res.msgActive})

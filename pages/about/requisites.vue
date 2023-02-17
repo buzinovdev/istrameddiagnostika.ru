@@ -1,3 +1,21 @@
+<script setup>
+import PageTitle from "@/components/PageTitle"
+import CallNumber from "@/components/CallNumber";
+import {useStore} from "@/store";
+
+const store = useStore()
+const requisites = computed(() => store.requisites)
+useHead({
+  title: 'Реквизиты медицинского центра «Диагностика и лечение»',
+  meta: [
+    {
+      name: 'description',
+      content: `Реквизиты медицинского центра «Диагностика и лечение» в Истре. Позвоните нам: ${requisites.value.phones.join(', ')}.`
+    }
+  ]
+})
+</script>
+
 <template>
   <div>
     <PageTitle class="anim-item" text="Реквизиты медицинского центра «Диагностика и лечение»"/>
@@ -73,24 +91,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import PageTitle from "@/components/PageTitle"
-import CallNumber from "@/components/CallNumber";
-import {useStore} from "@/store";
-
-const store = useStore()
-const requisites = computed(() => store.requisites[0])
-useHead({
-  title: 'Реквизиты медицинского центра «Диагностика и лечение»',
-  meta: [
-    {
-      name: 'description',
-      content: `Реквизиты медицинского центра «Диагностика и лечение» в Истре. Позвоните нам: ${requisites.value.phones.join(', ')}.`
-    }
-  ]
-})
-</script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";

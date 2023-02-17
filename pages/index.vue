@@ -31,7 +31,7 @@
         </div>
       </div>
     </section>
-    <ServicesSection />
+    <ServicesSection/>
   </div>
 </template>
 
@@ -41,6 +41,15 @@ import ServicesSection from "@/components/section/Services";
 import {useStore} from '@/store'
 
 const store = useStore()
+useHead({
+  "title": 'Медицинский центр "Диагностика и лечение" в городе Истра',
+  "meta": [
+    {
+      "name": "description",
+      "content": "Мы предлагаем комплексные медицинские услуги своим пациентам. Наши высококвалифицированные специалисты из ведущих клиник и институтов г. Москвы (высшей, 1-ой категории, кандидаты и доктора медицинских наук) используют самые современные технологии и методы для диагностики и лечения заболеваний."
+    }
+  ],
+})
 </script>
 
 <style lang="scss" scoped>

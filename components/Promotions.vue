@@ -10,31 +10,44 @@ const promotion = computed(() => {
   return reversedArray.find(el => el.type === "promotion")
 })
 const {$cutString, $translate} = useNuxtApp()
+const dateEnd = (date) => {
+  return `${date.split('T').shift()}T23:59:59`
+}
 onBeforeMount(() => {
-  console.log(useNuxtApp())
-  setTimeout(() => {
-    show.value = promotionCookie.value
-  }, 5000)
+  const isEnd = new Date(Date.now()) <= new Date(dateEnd(promotion.value.dateEnd))
+  if (isEnd) {
+    setTimeout(() => {
+      show.value = promotionCookie.value
+    }, 5000)
+  }
 })
 const close = () => {
   promotionCookie.value = false
   show.value = false
 }
+
 </script>
 
 <template>
-  <div class="promotion" :class="{show}">
-    <button class="promotion-close" @click="close">
-      <Icon name="bi:x"/>
-    </button>
-    <div class="promotion-content">
-      <div>
-        <h4 class="promotion-title">{{ promotion.title }}</h4>
-        <div class="promotion-preview">{{ $cutString(promotion.preview, 100) }}</div>
+  <client-only>
+    <div class="promotion" :class="{show}">
+      <button class="promotion-close" @click="close">
+        <Icon name="bi:x"/>
+      </button>
+      <div class="promotion-content">
+        <div>
+          <h4 class="promotion-title">{{ promotion.title }}</h4>
+          <div class="promotion-date">
+            <span>Действует с</span> {{ new Intl.DateTimeFormat("ru").format(new Date(promotion.dateStart)) }}
+            <span>по</span> {{ new Intl.DateTimeFormat("ru").format(new Date(promotion.dateEnd)) }}
+          </div>
+          <div class="promotion-preview">{{ $cutString(promotion.preview, 100) }}</div>
+        </div>
+        <Link class="promotion-link light" :path="`/news/${$translate(promotion.title)}`" text="Подробнее"
+              @click="close"/>
       </div>
-      <Link class="promotion-link light" :path="`/news/${$translate(promotion.title)}`" text="Подробнее" @click="close"/>
     </div>
-  </div>
+  </client-only>
 </template>
 
 <style lang="scss" scoped>
@@ -90,23 +103,19 @@ const close = () => {
   }
 
   &-title {
-    font-size: 32px;
+    font-size: 42px;
     font-weight: 900;
     width: 100%;
+  }
+
+  &-date {
+    margin-top: 5px;
   }
 
   &-preview {
     font-size: 18px;
     margin: 24px 0;
   }
-
-  &-background {
-
-  }
-}
-
-@media screen and (min-width: 1024px) {
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -116,7 +125,6 @@ const close = () => {
     .title {
       padding: 0 30px;
     }
-
   }
 }
 

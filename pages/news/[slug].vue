@@ -10,6 +10,15 @@ const space = (number) => {
   if (number === undefined) return
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
+useHead({
+  "title": `${news.value.title}`,
+  "meta": [
+    {
+      "name": "description",
+      "content": `Медицинский центр "Диагностика и лечение". ${news.value.type === 'promotion' ? 'Акция.' : 'Новость.'} ${news.value.title}.`
+    }
+  ],
+})
 </script>
 
 <template>

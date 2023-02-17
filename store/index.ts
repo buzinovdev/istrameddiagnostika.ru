@@ -4,7 +4,7 @@ import {defineStore} from 'pinia'
 export const useStore = defineStore({
   id: 'main',
   state: () => ({
-    mainUrl: 'http://localhost:3000',
+    mainUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.istrameddiagnostika.ru',
     api: '/api/',
     loadData: false,
     showMenu: false,

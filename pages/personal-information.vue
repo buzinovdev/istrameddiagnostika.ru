@@ -1,5 +1,14 @@
 <script setup>
 import PageTitle from "@/components/PageTitle";
+useHead({
+  "title": 'Политика обработки и защиты персональных данных',
+  "meta": [
+    {
+      "name": "description",
+      "content": 'Политика обработки и защиты персональных данных медицинского центра "Диагностика и лечение"'
+    }
+  ],
+})
 </script>
 
 <template>

@@ -3,6 +3,15 @@ import PageTitle from "@/components/PageTitle";
 import {useStore} from '@/store'
 const store = useStore()
 const staff = computed(() => store.staff)
+useHead({
+  "title": 'Специалисты медицинского центра «Диагностика и лечение»',
+  "meta": [
+    {
+      "name": "description",
+      "content": 'Узнайте о наших специалистах и приемных днях.'
+    }
+  ],
+})
 </script>
 
 <template>

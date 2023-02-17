@@ -6,6 +6,15 @@ import {useStore} from '@/store'
 const store = useStore()
 const news = computed(() => store.news)
 const {$cutString, $translate} = useNuxtApp()
+useHead({
+  "title": 'Новости и акции медицинского центра "Диагностика и лечение"',
+  "meta": [
+    {
+      "name": "description",
+      "content": 'Узнайте последние новости медицинского центра "Диагностика и лечение" и проводимые акции.'
+    }
+  ],
+})
 </script>
 
 <template>

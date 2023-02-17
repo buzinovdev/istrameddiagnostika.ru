@@ -1,5 +1,14 @@
 <script setup>
 import PageTitle from "@/components/PageTitle";
+useHead({
+  "title": 'Соглашение об использовании файлов cookie',
+  "meta": [
+    {
+      "name": "description",
+      "content": 'Соглашение об использовании файлов cookie медицинского центра "Диагностика и лечение"'
+    }
+  ],
+})
 </script>
 
 <template>

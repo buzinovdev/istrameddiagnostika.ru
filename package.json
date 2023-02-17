@@ -11,12 +11,13 @@
     "node-sass": "^8.0.0",
     "nuxt": "^3.1.2",
     "nuxt-icon": "^0.2.10",
+    "nuxt-simple-robots": "^1.0.2",
+    "nuxt-simple-sitemap": "^1.0.7",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0"
   },
   "dependencies": {
     "@nuxt/webpack-builder": "^3.0.0",
-    "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.4.6",
     "@ts-stack/markdown": "^1.4.0",
     "nuxt-editorjs": "^1.0.4",
