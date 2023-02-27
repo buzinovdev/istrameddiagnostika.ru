@@ -53,7 +53,7 @@ const handler = async () => {
   <div class="admin">
     <PageTitle text="Редактировать услугу"/>
     <div class="admin-wrapper">
-      <form class="form anim-item" @submit.prevent>
+      <form class="form" @submit.prevent>
         <Field label="Название услуги" desc="Например: Терапевт" v-model:value="service.title"/>
         <Files label="Выбрать новую картинку" :multiple="false" v-model:value="img"/>
         <div class="title m-24">Добавить услуги</div>

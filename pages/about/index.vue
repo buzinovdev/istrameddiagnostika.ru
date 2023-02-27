@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import ServicesSection from "@/components/section/Services";
 import {useStore} from '@/store'
+import Slider from "@/components/Slider.vue";
 
 const store = useStore()
 const {$translate} = useNuxtApp()
 const hovered = ref<boolean>(false)
 const services = computed(() => store.services)
 const requisites = computed(() => store.requisites)
+const sliderItem = computed(() => store.sliders.find(el=> el.name === 'about'))
 useHead({
   "title": 'О медицинском центре "Диагностика и лечение"',
   "meta": [
@@ -20,7 +22,7 @@ useHead({
 
 <template>
   <div class="page-main">
-    <section class="section">
+    <section class="section page-inner">
       <h1 class="title anim-item">Медицинский центр «Диагностика и лечение» в Истре</h1>
       <div class="company">
         <div class="item anim-item">
@@ -51,7 +53,7 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="contacts">
+    <section class="contacts page-inner anim-item">
       <div class="contacts-wrap">
         <div class="contacts-block anim-item">
           <h3 class="contacts-title">Наш адрес</h3>
@@ -85,7 +87,8 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="section">
+    <Slider class="anim-item" :images="sliderItem.slides.sort((a,b)=> a.index - b.index)" path="/uploads/slider" max-width="740px" v-if="sliderItem"/>
+    <section class="section page-inner">
       <h2 class="title anim-item">Современная диагностика – залог успешного лечения</h2>
       <div class="company">
         <div class="item anim-item">
@@ -108,7 +111,7 @@ useHead({
         </div>
       </div>
     </section>
-    <section class="license">
+    <section class="license page-inner">
       <h2 class="title anim-item">Лицензии медицинского центра «Диагностика и лечение»</h2>
       <div class="license-list">
         <ControlsLinkFile class="anim-item" path="/documents/license.pdf" text="Лицензия"/>
@@ -121,34 +124,48 @@ useHead({
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
 
-section {
-  padding: 24px;
-}
-
 .section {
   .title {
     margin-bottom: 48px;
   }
+}
 
-  .company {
-    max-width: 1024px;
-    margin: 0 auto;
+.company {
+  max-width: 1024px;
+  margin: 0 auto;
 
-    .item {
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 28px;
-      text-indent: 40px;
-    }
+  .item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-indent: 40px;
+  }
 
-    .item + .item {
-      margin-top: 10px;
-    }
+  .item + .item {
+    margin-top: 10px;
+  }
 
-    p {
-      text-align: justify;
-    }
+  p {
+    text-align: justify;
+  }
+}
 
+.contacts {
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 24px;
+  }
+
+  &-block {
+    max-width: 25%;
+  }
+
+  &-title {
+    font-weight: 700;
+    margin-bottom: 14px;
+    font-size: 18px;
   }
 }
 
@@ -166,7 +183,6 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 2px;
-
   }
 
   &-empty {
@@ -244,22 +260,6 @@ section {
   }
 }
 
-.contacts {
-  &-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 24px;
-    margin-left: 24px;
-  }
-
-  &-title {
-    font-weight: 700;
-    margin-bottom: 14px;
-    font-size: 18px;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   .services-item:not(.show):hover {
     .services-title {
@@ -274,15 +274,27 @@ section {
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
   .services-item {
     width: calc(50% - 1px);
+  }
+  .contacts-block {
+    max-width: 50%;
+  }
+  .contacts-wrap {
+    justify-content: space-evenly;
   }
 }
 
 @media screen and (max-width: 767px) {
   .services-item {
-    width: 100%;
+    max-width: 100%;
+  }
+  .contacts-block {
+    max-width: 100%;
+  }
+  .contacts-wrap {
+    justify-content: flex-start;
   }
 }
 </style>

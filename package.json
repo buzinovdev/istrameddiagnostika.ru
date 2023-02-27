@@ -20,8 +20,6 @@
     "@nuxt/webpack-builder": "^3.0.0",
     "@pinia/nuxt": "^0.4.6",
     "@ts-stack/markdown": "^1.4.0",
-    "nuxt-editorjs": "^1.0.4",
-    "pinia": "^2.0.29",
     "turndown": "^7.1.1"
   }
 }

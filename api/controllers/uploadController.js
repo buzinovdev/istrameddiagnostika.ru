@@ -3,11 +3,11 @@ const bodyParser = require("body-parser")
 const path = require("path")
 const fs = require("fs")
 bodyParser.urlencoded({extended: true})
+
 class routerController {
   async uploadFiles(req, res) {
     try {
       const uploadDir = path.join(__dirname?.split('/api')?.shift() + '/public/uploads/tmp');
-      console.log('uploadDir',uploadDir)
       if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, '0777', true);
       const customOptions = {
         uploadDir: uploadDir,
@@ -27,7 +27,7 @@ class routerController {
           fs.rename(value.filepath, newFilepath, err => err);
           uploadFiles.push(value.originalFilename)
         });
-        return res.json({status: 200, files:uploadFiles});
+        return res.json({status: 200, files: uploadFiles});
       });
     } catch (e) {
       console.log(e)

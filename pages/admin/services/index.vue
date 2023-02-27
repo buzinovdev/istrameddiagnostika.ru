@@ -6,7 +6,7 @@
       <div class="services-list" :class="{hovered}" v-if="services.length > 0">
         <NuxtLink
             :to="`/admin/services/${item.path}`"
-            class="services-item anim-item"
+            class="services-item"
             v-for="(item, idx) in services"
             :key="idx"
             @mouseover="hovered = true"
@@ -69,7 +69,6 @@ const {$translate} = useNuxtApp()
     flex-direction: column;
     align-items: center;
     width: calc(33.3% - 1px);
-    opacity: 0;
     overflow: hidden;
     border-radius: 2px;
     transition: all $transition;

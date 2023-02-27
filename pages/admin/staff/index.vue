@@ -28,7 +28,7 @@ const deleteItem = async (id: string) => {
     <PageTitle text="Список врачей"/>
     <Link class="block m-24" path="/admin/staff/add" text="Добавить"/>
     <div class="admin-wrapper">
-      <div class="staff-list anim-item" v-if="staff.length > 0">
+      <div class="staff-list" v-if="staff.length > 0">
         <div class="staff-item " v-for="(item, idx) in staff" :key="idx">
           <NuxtLink :to="`/admin/staff/${item._id}`" class="staff-edit">
             <BootstrapIcon name="bi:pencil-fill"/>
@@ -41,7 +41,7 @@ const deleteItem = async (id: string) => {
           <Close class="staff-delete" @click="deleteItem(item._id)"/>
         </div>
       </div>
-      <div class="staff-empty anim-item" v-else>Список врачей пуст</div>
+      <div class="staff-empty" v-else>Список врачей пуст</div>
     </div>
   </div>
 </template>
@@ -55,7 +55,6 @@ const deleteItem = async (id: string) => {
     display: flex;
     flex-wrap: wrap;
     gap: 2px;
-    opacity: 0;
     width: 100%;
   }
 
@@ -75,7 +74,6 @@ const deleteItem = async (id: string) => {
     box-shadow: $shadow;
     padding: 24px;
     width: 100%;
-    transition: all $transition;
 
     span {
       margin-right: 12px;

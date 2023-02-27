@@ -68,7 +68,7 @@ const selectItem = (item: string): void => {
 }
 .selected {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   max-height: 220px;
   width: 100%;
   top: 110%;

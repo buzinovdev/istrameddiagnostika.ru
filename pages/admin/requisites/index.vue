@@ -13,7 +13,7 @@ const store = useStore()
 const route = useRoute()
 const router = useRouter()
 const cookieToken = useCookie<string>('token')
-const requisites = computed(() => store.requisites[0])
+const requisites = computed(() => store.requisites)
 const checkedForm = computed<boolean>(() => {
   return !(requisites.value.address.length > 0
       && requisites.value.inn.length > 0
@@ -48,9 +48,9 @@ const handler = async () => {
       bik: data.bik.trim(),
       email: data.email.trim(),
       phones: data.phones,
-      chiefDoc: data.gendir,
-      chiefDocPhones: data.gendirPhones,
-      chiefDocEmail: data.gendirEmail,
+      chiefDoc: data.chiefDoc,
+      chiefDocPhones: data.chiefDocPhones,
+      chiefDocEmail: data.chiefDocEmail,
       gendir: data.gendir,
       gendirPhones: data.gendirPhones,
       gendirEmail: data.gendirEmail,
@@ -68,9 +68,14 @@ const handler = async () => {
 
 <template>
   <div class="admin">
+
+
+    ОШИБКА ПРИ ОБНОВЛЕНИИ
+
+
     <PageTitle text="Редактировать реквизиты"/>
     <div class="admin-wrapper">
-      <form class="form anim-item" @submit.prevent>
+      <form class="form" @submit.prevent>
         <Field label="Юр. адрес" v-model:value="requisites.address"/>
         <div class="field flex flex-gap align-items-center justify-content-between">
           <Field label="Время работы" v-model:value="requisites.worktime"/>

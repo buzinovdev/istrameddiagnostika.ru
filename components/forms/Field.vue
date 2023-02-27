@@ -20,7 +20,7 @@
         v-else
     ></textarea>
     <small v-if="desc.length > 0">{{ desc }}</small>
-    <small v-if="type === 'email'">Например: qwerty@mail.ru</small>
+<!--    <small v-if="type === 'email'">Например: qwerty@mail.ru</small>-->
 
   </div>
 </template>

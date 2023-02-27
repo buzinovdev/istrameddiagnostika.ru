@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api/': {
-        target: process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : 'https://www.istrameddiagnostika.ru',
+        target: process.env.NODE_ENV === 'development' ? 'http://localhost:8001' : 'https://www.istrameddiagnostika.ru',
         changeOrigin: true
       }
     }
@@ -65,7 +65,7 @@ export default defineNuxtConfig({
     urls: async () => {
       const generateList = await getSitemapList()
       return generateList.map((page) => ({
-        url: `/services/${page}`,
+        url: page,
         changefreq: 'daily',
         priority: 1,
         lastmod: new Date()

@@ -14,7 +14,7 @@ useHead({
 <template>
   <div class="policity">
     <PageTitle text="Политика обработки и защиты персональных данных"/>
-    <div class="policity-wrapper">
+    <div class="policity-wrapper page-inner">
       <h2 class="anim-item">
         1. Общие положения
       </h2>
@@ -269,7 +269,6 @@ useHead({
 
 .policity {
   &-wrapper {
-    margin: 24px;
     font-size: 18px;
 
     h2 {
@@ -310,6 +309,5 @@ useHead({
       margin-top: 14px;
     }
   }
-
 }
 </style>

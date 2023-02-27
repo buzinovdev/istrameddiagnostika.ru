@@ -1,6 +1,7 @@
 <script setup>
 import PageTitle from "@/components/PageTitle"
 import {useStore} from '@/store'
+
 const route = useRoute()
 const store = useStore()
 const service = computed(() => store.services.find(el => el.path === route.params.slug))
@@ -22,8 +23,8 @@ useHead({
 
 <template>
   <div class="service">
-      <PageTitle :text="service.title"/>
-    <div class="service-inner">
+    <PageTitle :text="service.title"/>
+    <div class="page-inner">
       <div class="service anim-item" v-if="service.list.length > 0">
         <div class="title">Предлагаемые услуги</div>
         <ul class="table">
@@ -39,7 +40,9 @@ useHead({
           <li class="staff-item anim-item" v-for="(item, idx) in staff" :key="idx">
             <h2 class="staff-person">{{ item.person }}</h2>
             <div class="staff-desc">{{ item.desc }}</div>
-            <div class="staff-worktime"><span>Приемные дни</span>{{ item.worktime.length > 0 ? item.worktime.join(', ') : 'не указанны' }}</div>
+            <div class="staff-worktime">
+              <span>Приемные дни</span>{{ item.worktime.length > 0 ? item.worktime.join(', ') : 'не указанны' }}
+            </div>
           </li>
         </ul>
       </div>
@@ -52,12 +55,6 @@ useHead({
 @import "@/assets/styles/_variables.scss";
 
 .service {
-
-
-  &-inner {
-    padding: 24px;
-  }
-
   .table {
     display: block;
     margin: 0 auto;
@@ -147,10 +144,12 @@ useHead({
     .row {
       flex-direction: column;
     }
-.table {
-  margin: 0;
-  width: 100%;
-}
+
+    .table {
+      margin: 0;
+      width: 100%;
+    }
+
     .head,
     .content {
       padding: 12px 14px;

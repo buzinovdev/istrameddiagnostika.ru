@@ -7,17 +7,18 @@ const promotionCookie = useCookie('promotion', {maxAge: 86400, default: () => (t
 const show = ref<boolean>(false)
 const promotion = computed(() => {
   let reversedArray = store.news.reverse();
-  return reversedArray.find(el => el.type === "promotion")
+  const promotion = reversedArray.filter(el => el.type === "promotion" && new Date(Date.now()) <= new Date(dateEnd(el.dateEnd)))
+  const news = reversedArray.filter(el => el.toPromotion)
+  return [...promotion, ...news]
 })
 const {$cutString, $translate} = useNuxtApp()
 const dateEnd = (date) => {
   return `${date.split('T').shift()}T23:59:59`
 }
 onBeforeMount(() => {
-  const isEnd = new Date(Date.now()) <= new Date(dateEnd(promotion.value.dateEnd))
-  if (isEnd) {
-    setTimeout(() => {
+  if (promotion.value.length > 0) {
       show.value = promotionCookie.value
+    setTimeout(() => {
     }, 5000)
   }
 })
@@ -25,7 +26,6 @@ const close = () => {
   promotionCookie.value = false
   show.value = false
 }
-
 </script>
 
 <template>
@@ -35,16 +35,16 @@ const close = () => {
         <Icon name="bi:x"/>
       </button>
       <div class="promotion-content">
-        <div>
-          <h4 class="promotion-title">{{ promotion.title }}</h4>
-          <div class="promotion-date">
-            <span>Действует с</span> {{ new Intl.DateTimeFormat("ru").format(new Date(promotion.dateStart)) }}
-            <span>по</span> {{ new Intl.DateTimeFormat("ru").format(new Date(promotion.dateEnd)) }}
+        <div class="promotion-item" :class="{one: promotion.length === 1}" v-for="item in promotion" :key="item">
+          <h4 class="promotion-title">{{ item.title }}</h4>
+          <div class="promotion-date" v-if="item.type === 'promotion'">
+            <span>Действует с</span> {{ new Intl.DateTimeFormat("ru").format(new Date(item.dateStart)) }}
+            <span>по</span> {{ new Intl.DateTimeFormat("ru").format(new Date(item.dateEnd)) }}
           </div>
-          <div class="promotion-preview">{{ $cutString(promotion.preview, 100) }}</div>
+          <div class="promotion-preview">{{ $cutString(item.preview, 100) }}</div>
+          <Link class="promotion-link light" :path="`/news/${$translate(item.title)}`" text="Подробнее"
+                @click="close"/>
         </div>
-        <Link class="promotion-link light" :path="`/news/${$translate(promotion.title)}`" text="Подробнее"
-              @click="close"/>
       </div>
     </div>
   </client-only>
@@ -84,7 +84,7 @@ const close = () => {
     position: absolute;
     z-index: 1;
     top: 10px;
-    right: 10px;
+    right: 15px;
     font-size: 24px;
     color: $light-color;
   }
@@ -94,12 +94,24 @@ const close = () => {
     background: url("~/assets/images/banner.svg") bottom right no-repeat;
     border-radius: $radius;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
     box-sizing: border-box;
+    padding: 0 30px 0 24px ;
+    overflow-y: auto;
+  }
+  &-item {
     padding: 24px;
+    &.one {
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    &+&{
+      border-top: 2px solid white;
+      padding-top: 24px;
+    }
   }
 
   &-title {

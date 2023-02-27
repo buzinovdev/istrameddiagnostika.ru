@@ -28,7 +28,7 @@ const deleteItem = async (id: string) => {
     <PageTitle text="Новости и акции"/>
     <Link class="block m-24" path="/admin/news/add" text="Добавить"/>
     <div class="admin-wrapper">
-      <div class="news-list anim-item" v-if="news.length > 0">
+      <div class="news-list" v-if="news.length > 0">
         <div class="news-item " v-for="(item, idx) in news" :key="idx">
           <NuxtLink :to="`/admin/news/${item._id}`" class="news-edit">
             <BootstrapIcon name="bi:pencil-fill"/>
@@ -46,7 +46,7 @@ const deleteItem = async (id: string) => {
           <Close class="news-delete" @click="deleteItem(item._id)"/>
         </div>
       </div>
-      <div class="news-empty anim-item" v-else>Список новостей пуст</div>
+      <div class="news-empty" v-else>Список новостей пуст</div>
     </div>
   </div>
 </template>
@@ -60,7 +60,6 @@ const deleteItem = async (id: string) => {
     display: flex;
     flex-wrap: wrap;
     gap: 2px;
-    opacity: 0;
     width: 100%;
   }
 

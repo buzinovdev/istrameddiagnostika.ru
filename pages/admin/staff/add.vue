@@ -51,7 +51,7 @@ const handler = async () => {
   <div class="admin">
     <PageTitle text="Добавить врача"/>
     <div class="admin-wrapper">
-      <form class="form anim-item" @submit.prevent>
+      <form class="form" @submit.prevent>
         <Field label="ФИО" v-model:value="person"/>
         <Selected label="Направление" v-model:value="services" :list="servicesList"/>
         <Field label="Описание" :text="true" v-model:value="desc"/>

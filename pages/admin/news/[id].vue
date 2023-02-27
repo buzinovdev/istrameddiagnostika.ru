@@ -7,6 +7,7 @@ import Field from '~/components/forms/Field.vue'
 import PageTitle from '~/components/PageTitle.vue'
 import Files from "~/components/forms/Files.vue";
 import Btn from '~/components/controls/Btn.vue'
+import Checkbox from '@/components/forms/Checkbox'
 import {useStore} from '~/store'
 
 const router = useRouter()
@@ -14,9 +15,6 @@ const route = useRoute()
 const store = useStore()
 const cookieToken = useCookie<string>('token')
 const news = computed(() => store.news.find(el => el._id === route.params.id))
-onBeforeMount(()=>{
-  console.log(news.value.dateStart.split('T').shift())
-})
 const img = ref<FormData>()
 const {$translate} = useNuxtApp()
 const checkedForm = computed<boolean>(() => !(news.value.title.length > 0))
@@ -33,7 +31,6 @@ const handler = async () => {
       }
     }).catch(e => console.log(e))
   }
-  console.log(news.value.dateStart, new Date(news.value.dateStart))
   await $fetch(`${store.apiLink}news/update`, {
     method: 'POST',
     headers: {'Authorization': `Bearer ${cookieToken.value}`},
@@ -45,6 +42,7 @@ const handler = async () => {
       path: $translate(news.value.title.trim()),
       img: uploadFiles[0] || '',
       content: news.value.content,
+      toPromotion: news.value.toPromotion,
       date: new Date(),
       dateStart: news.value.dateStart,
       dateEnd: news.value.dateEnd
@@ -61,8 +59,9 @@ const handler = async () => {
   <div class="admin">
     <PageTitle text="Добавить новость или акцию"/>
     <div class="admin-wrapper">
-      <form class="form anim-item" @submit.prevent>
+      <form class="form" @submit.prevent>
         <Field label="Заголовок" v-model:value="news.title"/>
+        <Checkbox v-model:value="news.toPromotion" desc="Показать в баннере" v-if="news.type === 'news'"/>
         <div class="flex flex-gap field" v-if="news.type === 'promotion'">
           <DateSelect label="Дата начала акции" current v-model:value="news.dateStart"/>
           <DateSelect label="Дата конца акции" current v-model:value="news.dateEnd"/>

@@ -106,6 +106,9 @@ a {
   overflow: hidden;
   @include container;
   padding: 0 0 24px;
+  &-inner {
+    padding: 24px;
+  }
 }
 
 .container {
@@ -125,6 +128,9 @@ a {
 
   &-wrap {
     flex-wrap: wrap;
+  }
+  &-reverce {
+    flex-wrap: wrap-reverse;
   }
 
   &.column {
@@ -283,6 +289,7 @@ $delay: 0.2;
     border: 2px solid $main-color-alt;
     border-radius: $radius;
     padding: 12px 16px;
+    padding: 8px 12px;
     transition: all .2s ease-in-out;
     width: 100%;
 
@@ -308,6 +315,14 @@ $delay: 0.2;
       margin-left: 1rem;
     }
   }
+  .field.light {
+    .input {
+      border: none;
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
 }
 
 .admin {
@@ -317,10 +332,15 @@ $delay: 0.2;
     flex-direction: column;
     align-items: center;
     padding: 24px;
+    min-height: 280px;
   }
 
   .form {
     width: 100%;
+  }
+  .page-title {
+    opacity: 1;
+    animation: none;
   }
 }
 
@@ -385,6 +405,9 @@ $delay: 0.2;
 }
 
 @media screen and (max-width: 1024px) {
+  .page-inner {
+    padding: 12px;
+  }
   .form {
     .label {
       font-size: 18px;

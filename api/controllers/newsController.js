@@ -30,7 +30,7 @@ module.exports.add = async function (req, res) {
 }
 module.exports.update = async function (req, res) {
   try {
-    const {id, title, preview, img, content, date, dateStart, dateEnd} = req.body
+    const {id, title, preview, img, content, toPromotion, date, dateStart, dateEnd} = req.body
     if (img.length > 0) {
       const tmpDir = path.join(__dirname?.split('/api')?.shift() + '/public/uploads/tmp')
       const uploadDir = path.join(__dirname?.split('/api')?.shift() + `/public/uploads/news/`);
@@ -38,9 +38,9 @@ module.exports.update = async function (req, res) {
       fs.rename(`${tmpDir}/${img}`, `${uploadDir}/${img}`, function (err) {
         if (err) throw err
       })
-      await News.findByIdAndUpdate(id, {title, preview, img, content, date, dateStart, dateEnd});
+      await News.findByIdAndUpdate(id, {title, preview, img, content, toPromotion, date, dateStart, dateEnd});
     } else {
-      await News.findByIdAndUpdate(id, {title, preview, content, date, dateStart, dateEnd});
+      await News.findByIdAndUpdate(id, {title, preview, content, toPromotion, date, dateStart, dateEnd});
     }
     return res.json({status: 200, msgActive: true, msgType: 'success', msg: 'Новость изменена'})
   } catch (e) {

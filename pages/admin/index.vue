@@ -2,28 +2,40 @@
   <div class="dashboard">
     <PageTitle text="Панель управления"/>
     <div class="dashboard-inner">
-      <div class="dashboard-block anim-item">
+      <div class="dashboard-block">
         <div class="dashboard-title">Услуги<span class="dashboard-counter">{{ services.length }}</span></div>
         <div class="dashboard-controls">
           <Link class="light" path="/admin/services" text="Перейти к списку"/>
         </div>
       </div>
-      <div class="dashboard-block anim-item">
+      <div class="dashboard-block">
         <div class="dashboard-title">Врачи<span class="dashboard-counter">{{ staff.length }}</span></div>
         <div class="dashboard-controls">
           <Link class="light" path="/admin/staff" text="Перейти к списку"/>
         </div>
       </div>
-      <div class="dashboard-block anim-item">
+      <div class="dashboard-block">
         <div class="dashboard-title">Новости и акции</div>
         <div class="dashboard-controls">
           <Link class="light" path="/admin/news" text="Редактировать"/>
         </div>
       </div>
-      <div class="dashboard-block anim-item">
+      <div class="dashboard-block">
         <div class="dashboard-title">Реквизиты и контактные данные</div>
         <div class="dashboard-controls">
           <Link class="light" path="/admin/requisites" text="Редактировать"/>
+        </div>
+      </div>
+      <div class="dashboard-block">
+        <div class="dashboard-title">Контент сайта</div>
+        <div class="dashboard-controls">
+          <Link class="light" path="/admin/site" text="Редактировать"/>
+        </div>
+      </div>
+      <div class="dashboard-block">
+        <div class="dashboard-title">Статистика</div>
+        <div class="dashboard-controls">
+          <Link class="light" path="/admin/stats" text="Перейти"/>
         </div>
       </div>
     </div>

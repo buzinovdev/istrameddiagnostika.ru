@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "63f5c72f3a9a3b75eb0bd6df"
+  },
+  "title": "О нас",
+  "name": "about",
+  "slides": [
+    {
+      "index": 0,
+      "img": "image1.png",
+      "description": "Первый"
+    },
+    {
+      "index": 1,
+      "img": "image2.png",
+      "description": "Второй"
+    },
+    {
+      "index": 2,
+      "img": "image3.png",
+      "description": "Третий"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "63f88c643a9a3b75eb0bd6e2"
+  },
+  "title": "Новости",
+  "name": "news",
+  "slides": [
+    {
+      "index": 0,
+      "img": "image1.png",
+      "description": "Первый"
+    },
+    {
+      "index": 1,
+      "img": "image2.png",
+      "description": "Второй"
+    },
+    {
+      "index": 2,
+      "img": "image3.png",
+      "description": "Третий"
+    }
+  ]
+}]

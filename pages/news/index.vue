@@ -20,7 +20,7 @@ useHead({
 <template>
   <div class="news">
     <PageTitle text="Новости и акции"/>
-    <div class="news-inner">
+    <div class="news-inner page-inner">
       <div class="news-list" v-if="news.length > 0">
         <div class="news-item anim-item" v-for="(item, idx) in news" :key="idx">
           <img class="news-img" :src="`/uploads/services/${item.img}`">
@@ -51,7 +51,6 @@ useHead({
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 24px;
     box-sizing: border-box;
   }
 

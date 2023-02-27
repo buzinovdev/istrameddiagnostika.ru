@@ -14,7 +14,7 @@ useHead({
 <template>
   <div class="terms">
     <PageTitle text="Соглашение об использовании файлов cookie"/>
-    <div class="terms-wrapper">
+    <div class="terms-wrapper page-inner">
       <p class="anim-item">
         Интернет-сайт https://www.istrameddiagnostika.ru (далее — «Сайт») использует файлы cookie и схожие технологии,
         чтобы гарантировать максимальное удобство пользователям (далее — «Пользователи»), предоставляя
@@ -227,7 +227,6 @@ useHead({
 
 .terms {
   &-wrapper {
-    margin: 24px;
     font-size: 18px;
 
     h2 {

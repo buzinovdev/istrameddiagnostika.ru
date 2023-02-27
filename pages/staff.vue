@@ -17,7 +17,7 @@ useHead({
 <template>
   <div>
     <PageTitle text="Специалисты медицинского центра «Диагностика и лечение»"/>
-    <div class="staff-inner">
+    <div class="page-inner">
       <div class="staff-list" v-if="staff.length > 0">
         <div class="staff-item anim-item" v-for="(item, idx) in staff" :key="idx">
             <h2 class="staff-person">{{ item.person }}</h2>
@@ -34,10 +34,6 @@ useHead({
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
 .staff {
-  &-inner {
-    padding: 24px;
-  }
-
   &-list {
     position: relative;
     display: flex;

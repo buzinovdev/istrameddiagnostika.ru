@@ -19,7 +19,7 @@ useHead({
 <template>
   <div>
     <PageTitle class="anim-item" text="Реквизиты медицинского центра «Диагностика и лечение»"/>
-    <div class="requisites anim-item">
+    <div class="requisites page-inner anim-item">
       <ul class="table">
         <li class="row">
           <div class="head">Юр. адрес</div>
@@ -95,8 +95,6 @@ useHead({
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
 .requisites {
-  padding: 24px;
-
   .table {
     display: block;
     margin: 0 auto;

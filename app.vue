@@ -5,11 +5,13 @@ import Notification from '@/components/Notification'
 import {useStore} from '@/store'
 import AcceptCookie from "@/components/AcceptCookie";
 import Promotions from "./components/Promotions";
+import Mailing from "./components/Mailing";
 const store = useStore()
 store.getRequisites()
 store.getServices()
 store.getStaff()
 store.getNews()
+store.getSliders()
 </script>
 
 <template>
@@ -21,6 +23,7 @@ store.getNews()
     <Notification/>
     <AcceptCookie/>
     <Promotions/>
+    <Mailing/>
     <Footer />
   </div>
 </template>

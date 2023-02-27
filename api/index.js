@@ -20,7 +20,9 @@ const servicesRouter = require("./routers/servicesRouter")
 const staffRouter = require("./routers/staffRouter")
 const newsRouter = require("./routers/newsRouter")
 const uploadRouter = require("./routers/uploadRouter")
+const statsRouter = require("./routers/statsRouter")
 const mailerRouter = require("./routers/mailerRouter")
+const siteRouter = require("./routers/siteRouter")
 
 app.use(cors())
 app.use(express.json())
@@ -33,6 +35,8 @@ app.use("/staff", staffRouter)
 app.use("/news", newsRouter)
 app.use("/upload", uploadRouter)
 app.use("/mailer", mailerRouter)
+app.use("/stats", statsRouter)
+app.use("/site", siteRouter)
 
 const start = async () => {
   try {

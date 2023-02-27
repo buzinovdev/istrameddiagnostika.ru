@@ -8,6 +8,7 @@ const News = new Schema({
   img: {type: String, required: true},
   date: {type: Date, required: true},
   dateStart: {type: Date},
+  toPromotion: {type: Boolean},
   dateEnd: {type: Date},
   content: {type: String}
 })

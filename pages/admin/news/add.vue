@@ -9,6 +9,7 @@ import Field from '~/components/forms/Field.vue'
 import PageTitle from '~/components/PageTitle.vue'
 import Files from "~/components/forms/Files.vue";
 import Btn from '~/components/controls/Btn.vue'
+import Checkbox from '@/components/forms/Checkbox'
 import Add from '~/components/controls/Add.vue'
 import {useStore} from '~/store'
 
@@ -22,6 +23,7 @@ const radioList = [
 const type = ref<string>(radioList[0].value)
 const title = ref<string>('')
 const preview = ref<string>('')
+const toPromotion = ref<boolean>(false)
 const img = ref<FormData>()
 const dateStart = ref('')
 const dateEnd = ref('')
@@ -51,6 +53,7 @@ const handler = async () => {
       path: $translate(title.value.trim()),
       img: uploadFiles[0] || '',
       content: content.value,
+      toPromotion: toPromotion.value,
       date: new Date(),
       dateStart: dateStart.value,
       dateEnd: dateEnd.value
@@ -67,9 +70,10 @@ const handler = async () => {
   <div class="admin">
     <PageTitle text="Добавить новость или акцию"/>
     <div class="admin-wrapper">
-      <form class="form anim-item" @submit.prevent>
+      <form class="form" @submit.prevent>
         <Radio label="Выберите тип записи" v-model:value="type" :items="radioList"/>
         <Field label="Заголовок" v-model:value="title"/>
+        <Checkbox v-model:value="toPromotion" desc="Показать в баннере" v-if="type === 'news'"/>
         <div class="flex flex-gap field" v-if="type === 'promotion'">
           <DateSelect label="Дата начала акции" current v-model:value="dateStart"/>
           <DateSelect label="Дата конца акции" current v-model:value="dateEnd"/>

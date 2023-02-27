@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
-    <SocialItem path="https://wa.me/79253080896?text=" text="WhatsApp" site="whatsapp"/>
-    <SocialItem path="https://t.me/Diagnostika_lechenie" text="Telegram" site="telegram"/>
+    <SocialItem path="https://wa.me/79253080896?text=" text="WhatsApp" social="whatsapp"/>
+    <SocialItem path="https://t.me/Diagnostika_lechenie" text="Telegram" social="telegram"/>
   </div>
 </template>
 

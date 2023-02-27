@@ -191,6 +191,9 @@ section {
   .services-item {
     width: calc(50% - 1px);
   }
+  .top .company p {
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 767px) {

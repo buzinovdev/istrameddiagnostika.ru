@@ -12,13 +12,7 @@ useHead({
 </script>
 
 <template>
-  <div class="page-services">
+  <div class="page-inner">
     <ServicesSection/>
   </div>
 </template>
-
-<style scoped>
-.page-services {
-  margin: 24px;
-}
-</style>

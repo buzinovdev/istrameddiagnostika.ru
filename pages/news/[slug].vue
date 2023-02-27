@@ -23,10 +23,10 @@ useHead({
 
 <template>
   <div class="news">
-    <div class="news-top anim-item">
+    <div class="news-top page-inner anim-item">
       <img class="news-img" :src="`/uploads/services/${news.img}`">
       <div class="news-info">
-        <div class="flex flex-gap align-items-center">
+        <div class="flex flex-gap align-items-center flex-reverce">
           <h1 class="news-title">{{ news.title }}</h1>
           <div class="news-type">{{ news.type === 'promotion' ? 'Акция' : 'Новость' }}</div>
         </div>
@@ -39,7 +39,7 @@ useHead({
         </div>
       </div>
     </div>
-    <div class="news-preview generator anim-item" v-html="news.content"></div>
+    <div class="news-preview page-inner generator anim-item" v-html="news.content"></div>
   </div>
 </template>
 
@@ -52,7 +52,6 @@ useHead({
     flex-wrap: wrap;
     background: $bgg;
     color: white;
-    padding: 24px;
   }
 
   &-img {
@@ -86,36 +85,12 @@ useHead({
   }
 
   &-preview {
-    padding: 24px;
     font-size: 18px;
   }
 }
-
-@media screen and (max-width: 767px) {
-  .service {
-    .row {
-      flex-direction: column;
-    }
-
-    .table {
-      margin: 0;
-      width: 100%;
-    }
-
-    .head,
-    .content {
-      padding: 12px 14px;
-      box-sizing: border-box;
-      width: 100%;
-      text-align: center;
-    }
-
-    .head {
-      background-color: transparent;
-    }
-  }
-  .staff-item {
-    width: 100%;
+@media screen and (max-width: 768px) {
+  .news-info {
+    margin: 14px 0 0;
   }
 }
 </style>

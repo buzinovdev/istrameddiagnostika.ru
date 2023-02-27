@@ -1,36 +1,9 @@
-<template>
-  <div class="field">
-    <label for="email" class="label">{{ label }}</label>
-    <div class="file-container">
-      <div class="file-box">
-        <input class="file" :id="id" type="file" name="avatar" :multiple="multiple" @change="handleFileSelection"/>
-        Выберите или перетащите файл{{ multiple ? 'ы' : '' }}
-      </div>
-      <ul class="file-list" v-for="(file,idx) in files">
-        <li class="file-item">
-          Файл&nbsp;{{ idx + 1 }}: {{ file.name }}
-          <button class="file-remove" @click="removeFile(idx)"></button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
 const emit = defineEmits(['update:value'])
 const props = defineProps({
-  label: {
-    type: String,
-    default: ''
-  },
-  multiple: {
-    type: Boolean,
-    default: false
-  },
-  name: {
-    type: String,
-    default: ''
-  }
+  label: {type: String, default: ''},
+  multiple: {type: Boolean, default: false},
+  name: {type: String, default: ''}
 })
 const id = ref<string>("file-" + Math.random())
 const files = ref([]);
@@ -56,11 +29,27 @@ const removeFile = (fileKey: number) => {
 }
 </script>
 
+<template>
+  <div class="field">
+    <label for="email" class="label" v-if="label.length > 0">{{ label }}</label>
+    <div class="file-container">
+      <div class="file-box">
+        <input class="file" :id="id" type="file" name="avatar" :multiple="multiple" @change="handleFileSelection"/>
+        Выберите или перетащите файл{{ multiple ? 'ы' : '' }}
+      </div>
+      <ul class="file-list" v-for="(file,idx) in files">
+        <li class="file-item">
+          Файл&nbsp;{{ idx + 1 }}: {{ file.name }}
+          <button class="file-remove" @click="removeFile(idx)"></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
-
 .file {
-
   &-container {
     border-radius: $radius;
     padding: 12px;

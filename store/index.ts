@@ -33,6 +33,7 @@ export const useStore = defineStore({
     staffList: [],
     servicesList: [],
     newsList: [],
+    sliderList: [],
     requisitesList: []
   }),
 
@@ -46,6 +47,7 @@ export const useStore = defineStore({
     services: state => state.servicesList,
     requisites: state => state.requisitesList,
     news: state => state.newsList,
+    sliders: state => state.sliderList,
     nav: state => state.navigation,
   },
 
@@ -78,6 +80,11 @@ export const useStore = defineStore({
       const {data: requisites} = useFetch(`${this.apiLink}requisites/get`) || [{}]
       // @ts-ignore
       this.requisitesList = requisites
+    },
+    getSliders() {
+      const {data: sliderList} = useFetch(`${this.apiLink}site/getSlider`) || []
+      // @ts-ignore
+      this.sliderList = sliderList
     },
     showMenuAction(action: boolean) {
       this.showMenu = action

@@ -18,7 +18,7 @@ const services = ref<string>('Невролог')
 const confirm = ref(false)
 const servicesList = computed(() => store.servicesList)
 const checkedForm = computed<boolean>(() => {
-  return !(name.value.length > 0 && email.value.length > 0 && phone.value.length > 0 && date.value.length > 0 && confirm.value)
+  return !(name.value.length > 0 && phone.value.length > 0 && date.value.length > 0 && confirm.value)
 })
 const sendMessage = async () => {
   await $fetch(`${store.apiLink}mailer/contact`, {

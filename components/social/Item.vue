@@ -2,12 +2,24 @@
 defineProps({
   path: {type: String, default: '/'},
   text: {type: String, default: ''},
-  site: {type: String, default: ''}
+  social: {type: String, default: ''}
 })
+import {useStore} from '@/store'
+const store = useStore()
+const statsAdd = async (social) => {
+  await $fetch(`${store.apiLink}stats/social`, {
+    method: 'POST',
+    body: {social}
+  }).then((res) => {
+    console.log(res)
+  }).catch(e => {
+    console.log(e)
+  })
+}
 </script>
 
 <template>
-  <a class="social-item" target="_blank" :href="path"><img :src="`/${site}.svg`"></a>
+  <a class="social-item" target="_blank" :href="path" @click="statsAdd(social)"><img :src="`/${social}.svg`"></a>
 </template>
 
 <style lang="scss" scoped>
